@@ -34,3 +34,15 @@ def select_country(context, country):
     element_coordinates = ImageUtils.get_element_coordinates(context.browser, ui.SUGGESTED_CLASS_EXAMPLE)
     ImageUtils.highlight_element_in_screenshot(screenshot_path, element_coordinates)
 
+
+@then('User verifies the change in the selection')
+def select_country(context):
+    context.page = AutomationPracticePage(context.browser)
+
+    actual_text = context.page.assert_text_by_xpath(ui.DROPDOWN_EXAMPLE)
+
+    ImageUtils.attach_text_to_allure(actual_text, "Actual Text")
+
+    screenshot_path = ImageUtils.attach_screenshot_to_allure(context.browser, name="suggested class example")
+    element_coordinates = ImageUtils.get_element_coordinates(context.browser, ui.DROPDOWN_EXAMPLE)
+    ImageUtils.highlight_element_in_screenshot(screenshot_path, element_coordinates)

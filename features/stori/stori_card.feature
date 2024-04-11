@@ -19,5 +19,11 @@ Feature: Stori QA Automation Engineer Challenge
       | Uni  | Emiratos Árabes Unidos |
       | Col  | Colombia               |
 
+  @test1
+  Scenario: Select options from dropdown example
+    Given I navigate to the AutomationPractice main page
+    When The user selects option 2
+    And Then the option option 3 in the dropdown example
+    Then User verifies the change in the selection
 
   
