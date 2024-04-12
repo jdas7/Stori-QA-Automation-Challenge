@@ -4,6 +4,11 @@ class AutomationPracticeWebElements:
     DROPDOWN_EXAMPLE = '//*[@id="dropdown-class-example"]'
     DROPDOWN_OPTION_2 = '//*[@id="dropdown-class-example"]/option[3]'
     DROPDOWN_OPTION_3 = '//*[@id="dropdown-class-example"]/option[4]'
+    OPEN_WINDOW_BUTTON = '//*[@id="openwindow"]'
+    OPEN_TAP_BUTTON = '//*[@id="opentab"]'
+    TEXT = '//*[contains(text(), "30 day money back guarantee")]'
+    FRAME = '//*[@id="courses-iframe"]'
+    ALL_COURSES = '/html/body/div/div[2]/section[4]/div[2]/a'
 
     selector_mapping = {
         "México": {
