@@ -38,3 +38,8 @@ Feature: Stori QA Automation Engineer Challenge
     When I click the Open tab button in the example tab change
     And I navigates to the origin page tab and finds the button
     Then I captures a screenshot that includes the button and saves it with the test case name
+
+  @test3
+  Scenario: verify interact with alerts
+    Given I navigate to the AutomationPractice main page
+    When I type the string "Stori Card" and click on the "Alert" button in the example Switch to alert

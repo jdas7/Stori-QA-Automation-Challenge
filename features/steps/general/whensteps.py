@@ -51,14 +51,14 @@ def clic_open_window(context):
 def clic_open_tab(context):
     context.page = AutomationPracticePage(context.browser)
 
-    context.page.clic_by_xpath_with_time_out(ui.OPEN_TAP_BUTTON)
+    context.page.find_element_by_css_selector(ui.OPEN_TAP_BUTTON).click()
     context.page.switch_to_popup_window()
     allure.attach(context.browser.get_screenshot_as_png(), name="Open Window button",
                   attachment_type=AttachmentType.PNG)
 
 
 @when('I navigates to the origin page tab and finds the button')
-def clic_open_tab(context):
+def find_button(context):
     context.page = AutomationPracticePage(context.browser)
 
     context.page.switch_to_main_window()
