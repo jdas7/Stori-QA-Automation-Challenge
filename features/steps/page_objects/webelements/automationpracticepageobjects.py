@@ -9,6 +9,12 @@ class AutomationPracticeWebElements:
     TEXT = '//*[contains(text(), "30 day money back guarantee")]'
     FRAME = '//*[@id="courses-iframe"]'
     ALL_COURSES = '/html/body/div/div[2]/section[4]/div[2]/a'
+    ENTER_ALERT = '//*[@id="name"]'
+    ALERT_BUTTON = '#alertbtn'
+    CONFIRM_BUTTON = '#confirmbtn'
+    TABLE_WEB_EXAMPLE = '#product'
+    TABLE_HEADER_WEB_EXAMPLE = 'div.right-align fieldset:nth-child(2)'
+    SCROLL_TABLE_WEB_EXAMPLE = '//*[@id="product"]/tbody/tr[11]/td[2]'
 
     selector_mapping = {
         "México": {

@@ -1,3 +1,6 @@
+import json
+
+import allure
 from behave import then
 from selenium.common import NoSuchElementException
 
@@ -70,3 +73,54 @@ def verify_text(context):
                                                              name="check navigation and capture screen in new tab")
     element_coordinates = ImageUtils.get_element_coordinates(context.browser, ui.ALL_COURSES)
     ImageUtils.highlight_element_in_screenshot(screenshot_path, element_coordinates)
+
+
+@then('I print the names of the courses and their corresponding prices')
+def print_course_names_and_prices(context):
+    context.page = AutomationPracticePage(context.browser)
+
+    table_data = context.page.analyze_table(ui.TABLE_WEB_EXAMPLE)
+    course_info = context.page.print_course(table_data)
+
+    allure.attach(course_info, name="courses and their corresponding prices",
+                  attachment_type=allure.attachment_type.TEXT)
+
+    count_25 = 0
+    names_25 = []
+    for course in table_data:
+        if course['Price'] == '25':
+            count_25 += 1
+            names_25.append(course['Course'])
+    allure.attach("\n".join(names_25), name="Cursos que cuestan $25", attachment_type=allure.attachment_type.TEXT)
+
+    count_15 = 0
+    names_15 = []
+    for course in table_data:
+        if course['Price'] == '15':
+            count_15 += 1
+            names_15.append(course['Course'])
+
+    allure.attach("\n".join(names_15), name="Cursos que cuestan $15", attachment_type=allure.attachment_type.TEXT)
+
+
+@then('I print the names identifying the role')
+def print_names(context):
+    context.page = AutomationPracticePage(context.browser)
+
+    table_data_json = context.page.analyze_header_table(ui.TABLE_HEADER_WEB_EXAMPLE)
+    table_data = json.loads(table_data_json)
+
+    engineers = []
+    entrepreneurs = []
+
+    for row in table_data:
+        if row['Position'] == 'Engineer':
+            engineers.append(row['Name'])
+        elif row['Position'] == 'Businessman':
+            entrepreneurs.append(row['Name'])
+
+    allure.attach(f"Nombres de los Ingenieros: {', '.join(engineers)}", name="Ingenieros",
+                  attachment_type=allure.attachment_type.TEXT)
+    allure.attach(f"Nombres de los Empresarios: {', '.join(entrepreneurs)}", name="Empresarios",
+                  attachment_type=allure.attachment_type.TEXT)
+

@@ -39,7 +39,22 @@ Feature: Stori QA Automation Engineer Challenge
     And I navigates to the origin page tab and finds the button
     Then I captures a screenshot that includes the button and saves it with the test case name
 
-  @test3
+  @test4
   Scenario: verify interact with alerts
     Given I navigate to the AutomationPractice main page
-    When I type the string "Stori Card" and click on the "Alert" button in the example Switch to alert
+    And type the string "Stori Card" in the example Change to alert
+    When I accept the alert and verify the text
+    And I repeat the process for the confirmation alert
+    Then I verify that the text that is printed in the alert and confirmation are the same as the string "".
+
+  @test5
+  Scenario: Interacting with web table
+    Given I navigate to the AutomationPractice main page
+    When I analyze the courses that cost $25 and $15 in the web table
+    Then I print the names of the courses and their corresponding prices
+
+  @test6
+  Scenario: Verify the names of the engineers
+    Given I navigate to the AutomationPractice main page
+    When I identify the names of the Engineers and Businessman in the web table
+    Then I print the names identifying the role

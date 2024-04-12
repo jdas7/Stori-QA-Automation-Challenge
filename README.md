@@ -9,6 +9,9 @@ Stori QA Automation Engineer Challenge
 - [selenium library](https://pypi.org/project/selenium/).
 - [allure library](https://pypi.org/project/allure-behave/)
 
+#### you must install allure to be able to run the project with the html report and view it
+[Install Allure](https://allurereport.org/docs/gettingstarted-installation/)
+
 ### Running the project:
 
 To execute this project, you must first install the requirements with the next command:

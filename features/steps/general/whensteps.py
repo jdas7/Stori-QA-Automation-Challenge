@@ -1,4 +1,4 @@
-import time
+import json
 
 import allure
 from allure_commons.types import AttachmentType
@@ -6,6 +6,7 @@ from behave import when
 
 from features.steps.page_objects.modelobjects import AutomationPracticePage
 from features.steps.page_objects.webelements.automationpracticepageobjects import AutomationPracticeWebElements
+from utils.allureutils import ImageUtils
 
 ui = AutomationPracticeWebElements()
 
@@ -67,3 +68,42 @@ def find_button(context):
     context.page.scroll_to_element(ui.ALL_COURSES)
     allure.attach(context.browser.get_screenshot_as_png(), name="finds the button",
                   attachment_type=AttachmentType.PNG)
+
+
+@when('I accept the alert and verify the text')
+def find_button(context):
+    context.page = AutomationPracticePage(context.browser)
+
+    context.page.find_element_by_css_selector(ui.ALERT_BUTTON).click()
+    allure.attach(context.browser.get_screenshot_as_png(), name="popup alert",
+                  attachment_type=AttachmentType.PNG)
+    context.page.switch_to_alert()
+
+
+@when('I analyze the courses that cost $25 and $15 in the web table')
+def analyze_courses(context):
+    context.page = AutomationPracticePage(context.browser)
+
+    context.page.scroll_to_element(ui.SCROLL_TABLE_WEB_EXAMPLE)
+    allure.attach(context.browser.get_screenshot_as_png(), name="Table",
+                  attachment_type=AttachmentType.PNG)
+
+    table_data = context.page.analyze_table(ui.TABLE_WEB_EXAMPLE)
+    json_table_data = json.dumps(table_data, indent=4)
+
+    allure.attach(json_table_data, name="Tabla de cursos", attachment_type=allure.attachment_type.TEXT)
+
+
+@when('I identify the names of the Engineers and Businessman in the web table')
+def analyze_fixed_header_table(context):
+    context.page = AutomationPracticePage(context.browser)
+
+    context.page.scroll_to_element(ui.SCROLL_TABLE_WEB_EXAMPLE)
+    allure.attach(context.browser.get_screenshot_as_png(), name="Tables",
+                  attachment_type=AttachmentType.PNG)
+
+    table_data_json = context.page.analyze_header_table(ui.TABLE_HEADER_WEB_EXAMPLE)
+    allure.attach(table_data_json, name="Datos de la tabla", attachment_type=allure.attachment_type.TEXT)
+
+
+
