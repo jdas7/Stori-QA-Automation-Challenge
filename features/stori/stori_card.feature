@@ -58,3 +58,9 @@ Feature: Stori QA Automation Engineer Challenge
     Given I navigate to the AutomationPractice main page
     When I identify the names of the Engineers and Businessman in the web table
     Then I print the names identifying the role
+
+  @test7
+  Scenario: Extract highlighted text in iFrame
+    Given I navigate to the AutomationPractice main page
+    When I extract the text in the iFrame
+    Then I print the extracted text

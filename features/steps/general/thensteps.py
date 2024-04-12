@@ -124,3 +124,11 @@ def print_names(context):
     allure.attach(f"Nombres de los Empresarios: {', '.join(entrepreneurs)}", name="Empresarios",
                   attachment_type=allure.attachment_type.TEXT)
 
+
+@then('I print the extracted text')
+def step_impl(context):
+    context.page = AutomationPracticePage(context.browser)
+
+    text = context.page.assert_text_by_xpath(ui.TEXT_IFRAME)
+    ImageUtils.attach_text_to_allure(text, "Expected Text")
+

@@ -15,6 +15,7 @@ class AutomationPracticeWebElements:
     TABLE_WEB_EXAMPLE = '#product'
     TABLE_HEADER_WEB_EXAMPLE = 'div.right-align fieldset:nth-child(2)'
     SCROLL_TABLE_WEB_EXAMPLE = '//*[@id="product"]/tbody/tr[11]/td[2]'
+    TEXT_IFRAME = '/html/body/div/div[2]/section[2]/div/div/div/div[2]/ul/li[2]'
 
     selector_mapping = {
         "México": {

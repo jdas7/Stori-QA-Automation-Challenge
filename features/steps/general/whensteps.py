@@ -106,4 +106,11 @@ def analyze_fixed_header_table(context):
     allure.attach(table_data_json, name="Datos de la tabla", attachment_type=allure.attachment_type.TEXT)
 
 
-
+@when('I extract the text in the iFrame')
+def extracts_text(context):
+    context.page = AutomationPracticePage(context.browser)
+    context.page.scroll_to_element(ui.FRAME)
+    context.page.switch_to_frame(ui.FRAME)
+    context.page.scroll_to_element(ui.TEXT_IFRAME)
+    allure.attach(context.browser.get_screenshot_as_png(), name="text in the iFrame",
+                  attachment_type=AttachmentType.PNG)
