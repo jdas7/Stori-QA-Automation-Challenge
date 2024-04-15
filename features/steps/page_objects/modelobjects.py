@@ -42,6 +42,10 @@ class AutomationPracticePage:
 
     def switch_to_alert(self):
         alert = self.driver.switch_to.alert()
+        return alert
+
+    def accept_alert(self):
+        alert = self.switch_to_alert()
         time.sleep(5)
         alert.accept()
 

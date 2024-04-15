@@ -1,12 +1,12 @@
 import json
-
 import allure
+
 from allure_commons.types import AttachmentType
 from behave import when
+from selenium.webdriver.common.alert import Alert
 
 from features.steps.page_objects.modelobjects import AutomationPracticePage
 from features.steps.page_objects.webelements.automationpracticepageobjects import AutomationPracticeWebElements
-from utils.allureutils import ImageUtils
 
 ui = AutomationPracticeWebElements()
 
@@ -77,7 +77,14 @@ def find_button(context):
     context.page.find_element_by_css_selector(ui.ALERT_BUTTON).click()
     allure.attach(context.browser.get_screenshot_as_png(), name="popup alert",
                   attachment_type=AttachmentType.PNG)
-    context.page.switch_to_alert()
+
+    alert = context.page.switch_to_alert().text
+    alert.accept()
+
+
+@when(u'I repeat the process for the confirmation alert')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When I repeat the process for the confirmation alert')
 
 
 @when('I analyze the courses that cost $25 and $15 in the web table')

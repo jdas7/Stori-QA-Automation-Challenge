@@ -132,3 +132,8 @@ def step_impl(context):
     text = context.page.assert_text_by_xpath(ui.TEXT_IFRAME)
     ImageUtils.attach_text_to_allure(text, "Expected Text")
 
+
+@then(u'I verify that the text that is printed in the alert and confirmation are the same as the string "".')
+def step_impl(context):
+    raise NotImplementedError(
+        'STEP: Then I verify that the text that is printed in the alert and confirmation are the same as the string')
